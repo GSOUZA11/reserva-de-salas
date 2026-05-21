@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reserva de Salas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="header-left">
+      <span class="header-icon">🏢</span>
+      <div>
+        <h1>Reserva de Salas</h1>
+        <p>Gerencie salas e reservas com facilidade</p>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" onclick="showTab('salas')">🚪 Salas</button>
+      <button class="tab" onclick="showTab('reservas')">📅 Reservas</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ========== ABA SALAS ========== -->
+  <div id="tab-salas" class="tab-content active">
+    <div class="layout">
+
+      <div class="card">
+        <div class="card-header">
+          <span>🚪</span>
+          <h2 id="room-form-title">Nova Sala</h2>
+        </div>
+        <div class="card-body">
+          <form id="room-form">
+            <input type="hidden" id="room-id" />
+            <div class="form-group">
+              <label>Nome da Sala <span class="req">*</span></label>
+              <input type="text" id="room-name" required placeholder="Ex: Sala de Reunião A" />
+            </div>
+            <div class="form-group">
+              <label>Capacidade <span class="req">*</span></label>
+              <input type="number" id="room-capacity" required min="1" placeholder="Ex: 10" />
+            </div>
+            <div class="form-group">
+              <label>Descrição</label>
+              <textarea id="room-description" placeholder="Detalhes opcionais da sala..."></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">💾 Salvar Sala</button>
+              <button type="button" id="room-cancel-btn" class="btn btn-secondary" style="display:none">✕ Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="list-section">
+        <div class="stats-bar">
+          <div class="stat-card blue">
+            <div class="stat-label">Total de Salas</div>
+            <div class="stat-value" id="stat-rooms">0</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-label">Capacidade Total</div>
+            <div class="stat-value" id="stat-capacity">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Reservas Hoje</div>
+            <div class="stat-value" id="stat-today">0</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span>📋</span>
+            <h2>Salas Cadastradas</h2>
+            <span class="badge" id="rooms-badge">0 salas</span>
+          </div>
+          <div class="card-body">
+            <div class="search-bar">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="room-search" placeholder="Buscar sala..." />
+            </div>
+            <div id="rooms-loading" class="loading-state">Carregando salas...</div>
+            <div id="rooms-empty" class="empty-state" style="display:none">
+              <div class="empty-icon">🚪</div>
+              <p>Nenhuma sala cadastrada ainda.<br/>Adicione uma sala ao lado!</p>
+            </div>
+            <div id="rooms-list" class="items-list"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== ABA RESERVAS ========== -->
+  <div id="tab-reservas" class="tab-content">
+    <div class="layout">
+
+      <div class="card">
+        <div class="card-header">
+          <span>📅</span>
+          <h2>Nova Reserva</h2>
+        </div>
+        <div class="card-body">
+          <form id="booking-form">
+            <div class="form-group">
+              <label>Responsável <span class="req">*</span></label>
+              <input type="text" id="booking-responsible" required placeholder="Nome do responsável" />
+            </div>
+            <div class="form-group">
+              <label>Sala <span class="req">*</span></label>
+              <select id="booking-room" required>
+                <option value="">Selecione uma sala...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Data <span class="req">*</span></label>
+              <input type="date" id="booking-date" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Hora Inicial <span class="req">*</span></label>
+                <input type="time" id="booking-start" required />
+              </div>
+              <div class="form-group">
+                <label>Hora Final <span class="req">*</span></label>
+                <input type="time" id="booking-end" required />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">📅 Reservar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="list-section">
+        <div class="card">
+          <div class="card-header">
+            <span>📋</span>
+            <h2>Reservas</h2>
+            <span class="badge" id="bookings-badge">0 reservas</span>
+          </div>
+          <div class="card-body">
+            <div class="filters">
+              <div class="search-bar" style="flex:1">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="booking-search" placeholder="Buscar por responsável ou sala..." />
+              </div>
+              <input type="date" id="booking-filter-date" class="date-filter" title="Filtrar por data" />
+              <button class="btn btn-secondary btn-sm" onclick="clearFilters()">✕ Limpar</button>
+            </div>
+            <div id="bookings-loading" class="loading-state">Carregando reservas...</div>
+            <div id="bookings-empty" class="empty-state" style="display:none">
+              <div class="empty-icon">📭</div>
+              <p>Nenhuma reserva encontrada.<br/>Crie uma reserva ao lado!</p>
+            </div>
+            <div id="bookings-list" class="items-list"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
