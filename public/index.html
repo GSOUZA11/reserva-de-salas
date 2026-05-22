@@ -19,12 +19,12 @@
       </div>
     </div>
     <nav class="tabs">
-  <button class="tab active" onclick="showTab('salas')">
-    <img src="./salas.png" alt="Salas" class="tab-icon"> Salas
-  </button>
-  <button class="tab" onclick="showTab('reservas')">
-    <img src="./reservas.png" alt="Reservas" class="tab-icon"> Reservas
-  </button>
+  <button class="tab active" onclick="showTab('salas', this)">
+  <img src="./salas.png" alt="Salas" class="tab-icon"> Salas
+</button>
+<button class="tab" onclick="showTab('reservas', this)">
+  <img src="./reservas.png" alt="Reservas" class="tab-icon"> Reservas
+</button>
 </nav>
 
   </div>
@@ -170,6 +170,7 @@
              <img src="./correio.png" alt="Sem conteúdo" class="tab-icon">
               </div>
               <p>Nenhuma reserva encontrada.<br/>Tente ajustar os filtros ou adicione uma nova reserva!</p>
+            </div>
             <div id="bookings-list" class="items-list"></div>
           </div>
         </div>

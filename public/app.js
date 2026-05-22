@@ -4,11 +4,11 @@ let allRooms = [];
 let allBookings = [];
 
 // ==================== TABS ====================
-function showTab(tab) {
+function showTab(tab, el) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
+  el.classList.add('active');
   if (tab === 'reservas') {
     loadBookings();
     populateRoomSelect();
@@ -48,7 +48,7 @@ function renderRooms(rooms) {
     const card = document.createElement('div');
     card.className = 'room-card';
     card.innerHTML = `
-      <div class="room-avatar">🚪</div>
+      <div class="room-avatar"></div>
       <div class="room-info">
         <h3>${r.name}</h3>
         ${r.description ? `<p>${r.description}</p>` : ''}
@@ -182,7 +182,7 @@ function renderBookings(bookings) {
 function applyBookingFilters() {
   const q = document.getElementById('booking-search').value.toLowerCase();
   const dateFilter = document.getElementById('booking-filter-date').value;
-  let filtered = allBookings.filter(b => {
+  const filtered = allBookings.filter(b => {
     const matchText = b.responsible.toLowerCase().includes(q) || b.room_name.toLowerCase().includes(q);
     const matchDate = dateFilter ? b.date === dateFilter : true;
     return matchText && matchDate;
