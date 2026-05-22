@@ -11,16 +11,22 @@
 <header>
   <div class="header-content">
     <div class="header-left">
-      <span class="header-icon">🏢</span>
-      <div>
+      <div class="header-icon">
+      <img src="./logo.jpg" alt="Logo Reserva de Salas" />
+</div>
         <h1>Reserva de Salas</h1>
         <p>Gerencie salas e reservas com facilidade</p>
       </div>
     </div>
     <nav class="tabs">
-      <button class="tab active" onclick="showTab('salas')">🚪 Salas</button>
-      <button class="tab" onclick="showTab('reservas')">📅 Reservas</button>
-    </nav>
+  <button class="tab active" onclick="showTab('salas')">
+    <img src="./salas.png" alt="Salas" class="tab-icon"> Salas
+  </button>
+  <button class="tab" onclick="showTab('reservas')">
+    <img src="./reservas.png" alt="Reservas" class="tab-icon"> Reservas
+  </button>
+</nav>
+
   </div>
 </header>
 
@@ -32,7 +38,7 @@
 
       <div class="card">
         <div class="card-header">
-          <span>🚪</span>
+          <img src="./salas.png" alt="Salas" class="tab-icon">
           <h2 id="room-form-title">Nova Sala</h2>
         </div>
         <div class="card-body">
@@ -76,7 +82,7 @@
 
         <div class="card">
           <div class="card-header">
-            <span>📋</span>
+             <img src="./salas.png" alt="Salas" class="tab-icon">
             <h2>Salas Cadastradas</h2>
             <span class="badge" id="rooms-badge">0 salas</span>
           </div>
@@ -87,7 +93,9 @@
             </div>
             <div id="rooms-loading" class="loading-state">Carregando salas...</div>
             <div id="rooms-empty" class="empty-state" style="display:none">
-              <div class="empty-icon">🚪</div>
+              <div class="empty-icon">
+                <img src="./correio.png" alt="Sem conteúdo" class="tab-icon">
+              </div>
               <p>Nenhuma sala cadastrada ainda.<br/>Adicione uma sala ao lado!</p>
             </div>
             <div id="rooms-list" class="items-list"></div>
@@ -104,7 +112,7 @@
 
       <div class="card">
         <div class="card-header">
-          <span>📅</span>
+          <img src="./reservas.png" alt="Reservas" class="tab-icon">
           <h2>Nova Reserva</h2>
         </div>
         <div class="card-body">
@@ -143,7 +151,7 @@
       <div class="list-section">
         <div class="card">
           <div class="card-header">
-            <span>📋</span>
+            <img src="./reservas.png" alt="Reservas" class="tab-icon">
             <h2>Reservas</h2>
             <span class="badge" id="bookings-badge">0 reservas</span>
           </div>
@@ -158,9 +166,10 @@
             </div>
             <div id="bookings-loading" class="loading-state">Carregando reservas...</div>
             <div id="bookings-empty" class="empty-state" style="display:none">
-              <div class="empty-icon">📭</div>
-              <p>Nenhuma reserva encontrada.<br/>Crie uma reserva ao lado!</p>
-            </div>
+              <div class="empty-icon">
+             <img src="./correio.png" alt="Sem conteúdo" class="tab-icon">
+              </div>
+              <p>Nenhuma reserva encontrada.<br/>Tente ajustar os filtros ou adicione uma nova reserva!</p>
             <div id="bookings-list" class="items-list"></div>
           </div>
         </div>

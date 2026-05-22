@@ -23,17 +23,26 @@
 
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
-  background: var(--gray-100);
+  background-color: var(--gray-100);
+  background-image: url('https://images.unsplash.com/photo-1661169399398-dd271af8f651?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--gray-800);
   min-height: 100vh;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  background: linear-gradient(135deg, rgba(69, 72, 78, 0.92), rgba(230, 229, 231, 0.92)),
+              url('');
+  background-size: cover;
+  background-position: center;
   color: white;
   padding: 0 2rem;
-  box-shadow: 0 2px 12px rgba(37,99,235,0.3);
+  box-shadow: 0 2px 20px rgba(200, 201, 202, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 .header-content {
@@ -46,14 +55,22 @@ header {
   flex-wrap: wrap;
   padding: 1rem 0;
 }
-
+.header-icon img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
 .header-left { display: flex; align-items: center; gap: 1rem; }
 .header-icon { font-size: 2rem; }
-header h1 { font-size: 1.4rem; font-weight: 700; }
-header p { font-size: 0.82rem; opacity: 0.8; margin-top: 2px; }
+header h1 { font-size: 1.75rem; font-weight: 700; }
+header p { font-size: 1.25rem; opacity: 0.8; margin-top: 2px; }
 
 /* TABS */
-.tabs { display: flex; gap: 0.4rem; }
+.tabs {
+  display: flex;
+  justify-content: center; /* alinha os botões à direita */
+  gap: 0.6rem;               /* espaço entre os botões */
+}
 .tab {
   padding: 0.5rem 1.2rem;
   border: 2px solid rgba(255,255,255,0.3);
@@ -69,8 +86,22 @@ header p { font-size: 0.82rem; opacity: 0.8; margin-top: 2px; }
 .tab:hover { background: rgba(255,255,255,0.15); color: white; }
 .tab.active { background: white; color: var(--blue); border-color: white; }
 
+/* Ícones dentro das abas */
+.tab-icon {
+  width: 60px;   /* aumente conforme necessário */
+  height: 60px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
 .tab-content { display: none; }
 .tab-content.active { display: block; }
+
+.empty-icon img {
+  width: 90px;   /* maior para chamar atenção */
+  height: 90px;
+  opacity: 0.8;  /* leve transparência */
+}
 
 /* MAIN LAYOUT */
 main {
@@ -244,10 +275,10 @@ main {
 .room-avatar {
   width: 46px; height: 46px;
   border-radius: 10px;
-  background: var(--blue-light);
-  color: var(--blue);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; flex-shrink: 0;
+  background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=200&q=80');
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
 }
 .room-info { flex: 1; min-width: 0; }
 .room-info h3 { font-size: 0.95rem; font-weight: 600; color: var(--gray-800); }
